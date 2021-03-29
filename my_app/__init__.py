@@ -20,9 +20,9 @@ def create_app(config=None):
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from twit_app.routes import (main_route, user_route)
-    app.register_blueprint(main_route.bp)
-    app.register_blueprint(user_route.bp, url_prefix='/api')
+    from my_app.routes import (main_route, user_route)
+    # app.register_blueprint(main_route.bp)
+    # app.register_blueprint(user_route.bp, url_prefix='/api')
 
     return app
 

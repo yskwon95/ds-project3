@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block title %}
+City Index
+{% endblock %}
+
+{% block lead %}
+도와 도시 단위로만 입력이 가능합니다.
+{% endblock %}
+
+{% block main_body %}
+<form method="POST" action="/api/city">
+  <input name="citynamename" style="margin-bottom:10px" class="form-control" type="text" placeholder="Enter city">
+  <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+
+{% if user_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">City Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in user_list %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.full_name }}</td>
+      <td>
+        <a class="btn btn-secondary", href='/api/city/{{ city.id }}'>
+          Delete
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

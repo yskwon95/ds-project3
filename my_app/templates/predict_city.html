@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Compare User
+{% endblock  %}
+
+{% block lead  %}
+To compare press the button
+{% endblock  %}
+
+{% block main_body  %}
+<form method="POST" action="/compare">
+  <div class="form-group">
+    <label for="ice-cream-choice">Choose a flavor:</label>
+    <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+
+    <datalist id="ice-cream-flavors">
+        <option value="서울">
+        <option value="대전">
+        <option value="대구">
+        <option value="부산">
+        <option value="Vanilla">
+        
+
+    </datalist>
+
+  </div>
+
+  <label>Text to compare</label>
+  <input name="compare_text" style="margin-bottom:10px" class="form-control" type="text" />
+  <input type="submit" class="btn btn-primary" value="Compare" />
+</form>
+
+{% if prediction %}
+<p>PM2.5 : {{prediction.result}}'</p>
+{% endif %}
+{% endblock  %}
